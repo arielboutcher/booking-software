@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  <title>Booking Software</title>
+</head>
+<body>
+
+  <div class="navbar-fixed">
+    <nav class="nav-wrapper" style="color: #ad2727;">
+      <div class="container">
+        <a href="#" class="brand-logo">Booking</a>
+        <a href="#" class="sidenav-trigger" data-target="mobile-links">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="">Home</a></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+          <li><a href="{% url 'logout' %}" class="btn white black-text">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <ul class="sidenav" id="mobile-links">
+    <li><a href="">Home</a></li>
+    <li><a href="">About</a></li>
+    <li><a href="">Contact</a></li>
+  </ul>
+
+  <div class="container">
+    <br />
+  {%block content%}
+
+  {%endblock%}
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Allxs</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Canvas</a></li>
+          </ul>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="#!">Kampasi</a></li>
+            <li><a class="grey-text text-lighten-3" href="#!">Back to top</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      © 2020 Copyright
+      <a class="grey-text text-lighten-4 right" href="#!">ELEMENT Co.</a>
+      </div>
+    </div>
+</footer>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.sidenav').sidenav();
+      $('.modal').modal();
+      $('select').formSelect();
+      $('textarea#message').characterCounter();
+      $('.timepicker').timepicker();
+      $('.datepicker').datepicker({
+        disableWeekends: true,
+        yearRange: 1
+      });
+    });
+  </script>
+</body>
+</html>

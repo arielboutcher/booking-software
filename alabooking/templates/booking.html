@@ -1,0 +1,127 @@
+{%extends 'base.html'%}
+{%load static%}
+
+<div class="row">
+      <div class="col s12 m8 offset-m2">
+        <div class="card blue darken-1 z-depth-3">
+          <div class="card-content white-text">
+            <span class="card-title">Name Upcoming Bookings</span>
+            <p>I am a very simple card. I am good at containing small bits of information.
+            I am convenient because I require little markup to use effectively.</p>
+          </div>
+          <!--
+          <div class="card-action">
+            <a href="#">This is a link</a>
+            <a href="#">This is a link</a>
+          </div>
+        -->
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="row">
+      <div class="col s6">
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src="{ % static 'img/Excellence.JPG' %}" >
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Make booking<i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Make a new booking<i class="material-icons right">close</i></span>
+            <p>Use the button below to book any room of your choice.<p>
+            <br />
+            <a class="waves-effect waves-light btn orange modal-trigger" href="#terms"><i class="material-icons left">add_circle_outline</i>Book a room</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s6">
+        <div class="card small">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator responsive-img circle" src="{% static 'img/Diversity.JPG' %}">
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">Availabe rooms<i class="material-icons right">more_vert</i></span>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">Available rooms<i class="material-icons right">close</i></span>
+            <p>Use the button below to book any room of your choice.<p>
+            <br />
+            <a class="waves-effect waves-light btn orange modal-trigger" href="#terms"><i class="material-icons left">add_circle_outline</i>Book a room</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="terms" class="modal" style="width: 65%">
+    <div class="modal-content">
+      <h4>Book A Room</h4>
+      <div class="col s12 l5 offset-l2">
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="row">
+            <div class="input-field col s12 m6">
+              <select class="icons">
+                <optgroup label="LCs">
+                  <option value="1" data-icon="img/ALA_0001.JPG">Option 1</option>
+                  <option value="2" data-icon="img/man.jpg">Option 2</option>
+                </optgroup>
+                <optgroup label="Value Rooms">
+                  <option value="1">Curiosity</option>
+                  <option value="2">Excellence</option>
+                  <option value="3">Compassion</option>
+                  <option value="4">Humility</option>
+                  <option value="5">Diversity</option>
+                </optgroup>
+                <optgroup label="Value Rooms">
+                  <option value="3">Option 3</option>
+                  <option value="4">Option 4</option>
+                </optgroup>
+                <optgroup label="Value Rooms">
+                  <option value="3">Option 3</option>
+                  <option value="4">Option 4</option>
+                </optgroup>
+                <optgroup label="Value Rooms">
+                  <option value="3">Option 3</option>
+                  <option value="4">Option 4</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="input-field col s6">
+              <i class="material-icons prefix">message</i>
+              <textarea id="message" class="materialize-textarea" data-length="50"></textarea>
+              <label for="message">Valid Reason</label>
+            </div>
+            {{form.reason}}
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <i class="material-icons prefix">alarm</i>
+              <input type="text" id="timefrom" class="timepicker">
+              <label for="timefrom">Used From:</label>
+            </div>
+            {{form.timeToBeUsedFrom}}
+            <div class="input-field col s6">
+              <i class="material-icons prefix">schedule</i>
+              <input type="text" id="timeto" class="timepicker">
+              <label for="timeto">Used To:</label>
+            </div>
+            {{form.timeToBeUsedTo}}
+          </div>
+
+          <div class="input-field">
+            <i class="material-icons prefix">date_range</i>
+            <input type="text" id="date" class="datepicker">
+            <label for="date">Choose a date you need me for...</label>
+          </div>
+          {{form.dateToBeUsed}}
+        </form>
+      </div>
+    </div>
+    <div class="modal-fixed-footer">
+      <div class="input-field center">
+        <button class="btn modal-close">Submit</button>
+      </div>
+    </div>
+  </div>
