@@ -15,6 +15,7 @@ from .forms import CreateUserForm, BookingForm
 def home(request):
     return render(request, 'booking.html')
 
+@login_required
 def dashboard(request):
     return render(request, 'dashboard.html')
 
@@ -66,25 +67,48 @@ def logoutUser(request):
 def profile(request, pk):
     user  = User.objects.get(id=pk)
     name = user.username
-    context= {'name':name}
-    return render(request, 'profile.html', context)
 
-
-@login_required
-def createBooking(request):
-    form = BookingForm()
+    ############modal booking form
+    booking_form = BookingForm()
     rooms = Room.objects.all()
 
     if request.method == "POST":
-        form = BookingForm(request.POST)
-        if form.is_valid:
-            form.save()
-            booking_id = form.cleaned_data.get('id')
+        booking_form = BookingForm(request.POST)
+        if booking_form.is_valid:
+            booking_form.save()
+            booking_id = booking_form.cleaned_data.get('id')
+            message = messages.success(request, 'Booking was made with Booking ID '+booking_id )
+            return redirect('profile')
+        else:
+            message=messages.error(request, 'Booking has failed!')
+            ##end of booking modal form
+
+    context = {
+    'name':name,
+    'form':booking_form,
+    'rooms':rooms,
+    }
+    return render(request, 'profile.html', context)
+
+#################################################################3
+
+"""
+@login_required
+def createBooking(request):
+    booking_form = BookingForm()
+    rooms = Room.objects.all()
+
+    if request.method == "POST":
+        booking_form = BookingForm(request.POST)
+        if booking_form.is_valid:
+            booking_form.save()
+            booking_id = booking_form.cleaned_data.get('id')
             messages.success(request, 'Booking was made with Booking ID '+booking_id )
             return redirect('profile')
         else:
             messages,error(request, 'Booking has failed!')
 
-    context = {'form':form, 'rooms':rooms}
+    context = {'form':booking_form, 'rooms':rooms}
 
-    return render(request, 'booking.html', context)
+    render(request, 'booking.html', context)
+"""

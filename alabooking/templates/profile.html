@@ -1,7 +1,6 @@
 {%extends 'base.html' %}
 {%load static%}
 
-
 {%block content%}
     <div class="row">
       <div class="col s12 m8 offset-m2">
@@ -55,15 +54,60 @@
         </div>
       </div>
     </div>
-  </div>
   <div id="terms" class="modal" style="width: 65%">
     <div class="modal-content">
       <h4>Book A Room</h4>
       <div class="col s12 l5 offset-l2">
-        <form>
+        <form class="" action="" method="post">
+           {% csrf_token %}
+           {{form.room}}
+          <div class="input-group mb-3">
+            <div class="input-group-append">
+              <span class="input-field col s6"><i class="material-icons prefix">message</i></span>
+                <label for="message">Reason for booking</label>
+            </div>
+            {{form.reason}}
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-field col s6"><i class="material-icons prefix">date_range</i></span>
+                <label for="date">Date to use me:</label>
+              </div>
+                {{form.dateToBeUsed}}
+                </div>
+
+                </div>
+              <div class="input-group mb-3">
+                <div class="input-group-append">
+                  <span class="input-field col s6"><i class="material-icons prefix"></i></span>
+                    <label for="timefrom">Time to use me from</label>
+                </div>
+                {{form.timeToBeUsedFrom}}
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-append">
+                    <span class="input-field col s6"><i class="material-icons prefix"></i></span>
+                      <label for="timeto">Time to use me to</label>
+                  </div>
+                  {{form.timeToBeUsedTo}}
+                  </div>
+      <!-------------------------------------------------------------->
+          <div class="modal-fixed-footer">
+            <div class="input-field center">
+              <button class="btn modal-close">Submit</button>
+            </div>
+          </div>
+          </div>
+          </form>
+          </div>
+
+
+      <!--  <form method="POST", action="">
+          {% csrf_token %}
           <div class="row">
             <div class="input-field col s12 m6">
-              <select class="icons">
+              <select>
                 {% for room in rooms %}
                     <option value="{{ room.id }}">{{ room.name }}</option>
                 {% endfor %}
@@ -74,6 +118,7 @@
               <textarea id="message" class="materialize-textarea" data-length="50"></textarea>
               <label for="message">Valid Reason</label>
             </div>
+
           </div>
           <div class="row">
             <div class="input-field col s6">
@@ -87,7 +132,6 @@
               <label for="timeto">Used To:</label>
             </div>
           </div>
-
           <div class="input-field">
             <i class="material-icons prefix">date_range</i>
             <input type="text" id="date" class="datepicker">
@@ -102,4 +146,15 @@
       </div>
     </div>
   </div>
+-->
 {%endblock%}
+
+  {% if form.is_valid %}
+  <div class="alert alert-success" role="alert">
+  Booking was successful
+</div>
+{% else %}
+<div class="alert alert-danger" role="alert">
+  Bookig failed
+</div>
+{% endif %}
