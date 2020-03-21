@@ -74,7 +74,13 @@ def profile(request, pk):
 
     if request.method == "POST":
         booking_form = BookingForm(request.POST)
+        dateToBeUsed = request.POST.get('date')
+        timeToBeUsedFrom = request.POST.get('timefrom')
+        timeToBeUsedTo = request.POST.get('timeto')
         if booking_form.is_valid:
+            #dateToBeUsed = request.POST.get('date')
+            #timeToBeUsedFrom = request.POST.get('timefrom')
+            #timeToBeUsedTo = request.POST.get('timeto')
             booking_form.save()
             booking_id = booking_form.cleaned_data.get('id')
             message = messages.success(request, 'Booking was made with Booking ID '+booking_id )

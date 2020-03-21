@@ -66,15 +66,15 @@
               <span class="input-field col s6"><i class="material-icons prefix">message</i></span>
                 <label for="message">Reason for booking</label>
             </div>
-            {{form.reason}}
+              {{form.reason}}
             </div>
 
             <div class="input-group mb-3">
               <div class="input-group-append">
                 <span class="input-field col s6"><i class="material-icons prefix">date_range</i></span>
                 <label for="date">Date to use me:</label>
+                  <input type="text" id="date" name="date" class="datepicker">
               </div>
-                {{form.dateToBeUsed}}
                 </div>
 
                 </div>
@@ -82,15 +82,16 @@
                 <div class="input-group-append">
                   <span class="input-field col s6"><i class="material-icons prefix"></i></span>
                     <label for="timefrom">Time to use me from</label>
+                    <input type="text" name="timefrom" id="timefrom" class="timepicker">
                 </div>
-                {{form.timeToBeUsedFrom}}
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-append">
                     <span class="input-field col s6"><i class="material-icons prefix"></i></span>
                       <label for="timeto">Time to use me to</label>
+                      <input type="text" name="timeto" id="timeto" class="timepicker">
+
                   </div>
-                  {{form.timeToBeUsedTo}}
                   </div>
       <!-------------------------------------------------------------->
           <div class="modal-fixed-footer">
